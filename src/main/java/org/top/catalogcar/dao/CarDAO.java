@@ -12,6 +12,7 @@ import java.util.List;
 public class CarDAO implements IControlCar {
 
     // CREATE
+    @Override
     public void insertCar(CarsTEntity car) {
         // 1. создаем фабрику
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
