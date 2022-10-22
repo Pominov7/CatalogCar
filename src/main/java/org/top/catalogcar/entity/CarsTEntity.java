@@ -2,6 +2,19 @@ package org.top.catalogcar.entity;
 
 import jakarta.persistence.*;
 
+@NamedQuery(name = "get_all_cars_younger_than",
+        query = "select e from CarsTEntity e where e.yearF > :param")
+
+@NamedQuery(name = "get_cars_more_expensive_than",
+        query = "select e from CarsTEntity e where e.priceF > :param")
+
+@NamedQuery(name = "get_cars_by_model",
+        query = "select e from CarsTEntity e where e.modelF = :model")
+
+@NamedQuery(name = "get_car_by_model_criteria",
+        query = "select e from CarsTEntity e where e.modelF = :model")
+
+
 @Entity
 @Table(name = "cars_t", schema = "cars_db", catalog = "")
 public class CarsTEntity {
@@ -98,12 +111,7 @@ public class CarsTEntity {
 
     @Override
     public String toString() {
-        return "CarsTEntity{" +
-                "id=" + id +
-                ", nameF='" + nameF + '\'' +
-                ", modelF='" + modelF + '\'' +
-                ", yearF=" + yearF +
-                ", priceF=" + priceF +
-                '}';
+        return String.format("%-4s %-18s %-16s %-8s %-17s",
+                id, nameF, modelF, yearF, priceF);
     }
 }
